@@ -1,16 +1,32 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Navbar = () => {
+  const usuario = JSON.parse(localStorage.getItem("user")) || {};
+  //console.log(usuario, "NAVBAR");
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    try {
+      await axios.post("http://localhost:3001/api/users/logout");
+
+      localStorage.removeItem("user");
+
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <div id="menu">
-      <nav class="navbar navbar-expand-lg danger">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
-          </a>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark" id="nav">
+        <div className="container-fluid">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup"
@@ -20,9 +36,12 @@ const Navbar = () => {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">
+          <div
+            className="collapse navbar-collapse p-2"
+            id="navbarTogglerDemo02"
+          >
+            <div className="navbar-nav">
+              {/* <a class="nav-link active" aria-current="page" href="#">
                 Venta
               </a>
               <a class="nav-link active" href="#">
@@ -31,31 +50,53 @@ const Navbar = () => {
               <a class="nav-link active" href="#">
                 Agenda tu visita
               </a>
-              <a class="nav-link active" href="http://localhost:3001/registro">
+              <a class="nav-link active" href="#">
                 Mi perfil
               </a>
-
+*/}
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <div className="btn-toolbar">
-                  <div className="btn-group me-2" role="group">
-                    <Link to="/login">
-                      <button className="btn btn-outline-success" type="loggin">
-                        Login
-                      </button>
-                    </Link>
-                  </div>
-
-                  <div className="btn-group me-2" role="group">
-                    <Link to="/registro">
+                <>
+                  {usuario.nombre ? (
+                    <div className="btn-group me-2" role="group">
+                      <p className="has-text-white">
+                        {usuario.nombre
+                          ? `${usuario.nombre.toUpperCase()}`
+                          : `LOGUEATE`}
+                      </p>
                       <button
                         className="btn btn-outline-success"
-                        type="registro"
+                        type="logout"
+                        onClick={handleLogOut}
                       >
-                        Registro
+                        Cerrar Sesión
                       </button>
-                    </Link>
-                  </div>
-                </div>
+                    </div>
+                  ) : (
+                    <div className="btn-toolbar">
+                      <div className="btn-group me-2" role="group">
+                        <Link to="/registro">
+                          <button
+                            className="btn btn-outline-success"
+                            type="registro"
+                          >
+                            Registro
+                          </button>
+                        </Link>
+                      </div>
+
+                      <div className="btn-group me-2" role="group">
+                        <Link to="/login">
+                          <button
+                            className="btn btn-outline-success"
+                            type="loggin"
+                          >
+                            Iniciar Sesión
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </>
               </ul>
             </div>
           </div>

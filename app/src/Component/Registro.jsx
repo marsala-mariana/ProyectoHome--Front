@@ -41,7 +41,7 @@ const Registro = () => {
     <div>
       <h1>Registrarse : </h1>
       <form onSubmit={handleSubmit}>
-        <div class="mb-3">
+        <div class="Auto">
           <label class="form-label">Nombre</label>
           <input
             value={nombre}
@@ -52,7 +52,7 @@ const Registro = () => {
             aria-describedby="nombre"
           />
         </div>
-        <div class="mb-3">
+        <div class="Auto">
           <label class="form-label">Celular</label>
           <input
             value={celu}

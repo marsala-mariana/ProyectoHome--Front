@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+  //const [user, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [contraseña, setPass] = useState("");
 
@@ -17,20 +19,24 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/api/users/login", {
-        email: email,
-        contraseña: contraseña,
-      })
-      .then((res) => res.data)
+      .post(
+        "http://localhost:3001/api/users/login",
+        {
+          email: email,
+          contraseña: contraseña,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => localStorage.setItem("user", JSON.stringify(res.data)))
+
       .then((user) => {
-        console.log(user);
-        setUsers([...users, user]);
-        // Navigate(`/users/${user.id}`);
+        navigate("/");
       });
   };
+
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Iniciar Sesión</h1>
 
       <div className="container">
         <form className="row" onSubmit={handleSubmit}>
@@ -50,7 +56,7 @@ const Login = () => {
             <input
               value={contraseña}
               onChange={handleChangePass}
-              type="contraseña"
+              type="password"
               className="form-control"
               id="contraseña"
               placeholder="Escribi tu contraseña"

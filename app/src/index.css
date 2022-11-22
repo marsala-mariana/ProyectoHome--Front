@@ -11,12 +11,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-* {
-  background-color: #fe4236;
-}
 */
-.menu {
-  background-color: #fe4236;
-  color: white;
-}
