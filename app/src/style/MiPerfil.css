@@ -12,10 +12,6 @@ p {
   font-weight: 700;
   font-size: 16px;
   line-height: 17px;
-  /* identical to box height, or 106% */
-
-  color: #123ac8;
-
   mix-blend-mode: normal;
 }
 
@@ -29,7 +25,7 @@ h6 {
   text-transform: uppercase;
 
   color: #123ac8;
-  border: solid 0.4px #123ac8;
+
   margin-bottom: 22px;
   width: 657px;
   height: 32px;
