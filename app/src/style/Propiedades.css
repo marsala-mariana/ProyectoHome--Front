@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 20px !important;
+  height: auto !important;
+  font-family: Hind, sans-serif !important;
+  vertical-align: baseline;
+  border: 0px #123ac8;
+}
+
+h6 {
+  font-size: 200%;
+}

@@ -1,0 +1,18 @@
+.navbar,
+.btn-toolbar,
+.d-flex,
+.collapse,
+.navbar-nav,
+.container-fluid {
+  background-color: #fe4236;
+  border: none;
+}
+
+button {
+  margin: 0 auto;
+  flex-direction: row;
+}
+
+.logo {
+  margin-right: 21px;
+}

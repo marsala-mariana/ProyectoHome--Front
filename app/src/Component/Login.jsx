@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../style/Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,19 +30,17 @@ const Login = () => {
       )
       .then((res) => localStorage.setItem("user", JSON.stringify(res.data)))
 
-      .then((user) => {
+      .then(() => {
         navigate("/");
       });
   };
 
   return (
     <div>
-      <h1>Iniciar Sesión</h1>
-
-      <div className="container">
+      <main className="form-signin">
         <form className="row" onSubmit={handleSubmit}>
-          <div>
-            <label>Correo electrónico :</label>
+          <h1> Por favor ingresa</h1>
+          <div className="form-floating">
             <input
               value={email}
               onChange={handleChangeEmail}
@@ -50,9 +49,9 @@ const Login = () => {
               id="floatingInput"
               placeholder="Escribi tu email"
             />
+            <label for="floatingInput">Correo electrónico :</label>
           </div>
-          <div>
-            <label>Contraseña:</label>
+          <div className="form-floating">
             <input
               value={contraseña}
               onChange={handleChangePass}
@@ -61,12 +60,13 @@ const Login = () => {
               id="contraseña"
               placeholder="Escribi tu contraseña"
             />
+            <label for="floatingInput">Contraseña:</label>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
+          <button type="submit" class="w-100 btn btn-lg btn-primary">
+            Ingesar
           </button>
         </form>
-      </div>
+      </main>
     </div>
   );
 };

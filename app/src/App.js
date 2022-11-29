@@ -4,6 +4,8 @@ import Registro from "./Component/Registro";
 import Navbar from "./Component/Navbar";
 import Login from "./Component/Login";
 import Home from "./Component/Home";
+import MiPerfil from "./Component/MiPerfil";
+import Admin from "./Component/Admin";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/" element={<Home />} />
+        <Route path="/perfil" element={<MiPerfil />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>
   );

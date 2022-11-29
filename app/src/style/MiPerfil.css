@@ -1,0 +1,44 @@
+.perfil {
+  margin-top: 25px;
+  margin-left: 144px;
+  margin-right: 200px;
+  padding-top: 73px;
+}
+
+p {
+  color: #123ac8;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 17px;
+  /* identical to box height, or 106% */
+
+  color: #123ac8;
+
+  mix-blend-mode: normal;
+}
+
+h6 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 25px;
+  line-height: 25px;
+
+  text-transform: uppercase;
+
+  color: #123ac8;
+  border: solid 0.4px #123ac8;
+  margin-bottom: 22px;
+  width: 657px;
+  height: 32px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.editar {
+  border: 1px solid #123ac8;
+  border-radius: 0px 0px 20px;
+}
