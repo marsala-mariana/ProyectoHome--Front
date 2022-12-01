@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AgregarPropiedad from "./AgregarPropiedad";
+import AdminPropiedad from "./AdminPropiedad";
 
 const Admin = () => {
   const [user, setUser] = useState([]);
@@ -71,6 +72,11 @@ const Admin = () => {
       <div class="card">
         <div class="card-body">
           <AgregarPropiedad />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <AdminPropiedad />
         </div>
       </div>
     </div>

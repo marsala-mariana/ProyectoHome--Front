@@ -18,6 +18,8 @@ const MenuDesplegable = () => {
     }
   };
 
+  const fals = usuario.admin === false;
+
   return (
     <div className="btn-group me-2" role="group">
       <button
@@ -34,10 +36,15 @@ const MenuDesplegable = () => {
           <a className="dropdown-item" href="#">
             Agenda tu visita
           </a>
-          <a className="dropdown-item" href="http://localhost:3000/perfil">
-            Mi perfil
-          </a>
-
+          {fals ? (
+            <a className="dropdown-item" href="http://localhost:3000/perfil">
+              Mi perfil
+            </a>
+          ) : (
+            <a className="dropdown-item" href="http://localhost:3000/admin">
+              Mi perfil Admin
+            </a>
+          )}
           <a className="dropdown-item" onClick={handleLogOut}>
             Cerrar sesión
           </a>

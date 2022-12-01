@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../style/Propiedades.css";
 
 const Propiedad = ({ prop }) => {
@@ -14,9 +15,16 @@ const Propiedad = ({ prop }) => {
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <button class="favorito" className="btn btn-outline-warning">
-              ⭐ FAVORITOS{" "}
-            </button>
+            <Link to="/favoritos">
+              <button class="favorito" className="btn btn-outline-warning">
+                ⭐ FAVORITOS
+              </button>
+            </Link>
+            <Link to={`/detalles/${prop.id}`}>
+              <button class="favorito" className="btn btn-outline-warning">
+                ⭐ DETALLES
+              </button>
+            </Link>
             <h5 className="card-title">${prop?.precio}</h5>
             <h5 className="card-title">{prop?.nombre}</h5>
             <p className="card-text">
