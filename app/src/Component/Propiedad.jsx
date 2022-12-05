@@ -1,8 +1,24 @@
+import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/Propiedades.css";
 
 const Propiedad = ({ prop }) => {
+  const usuario = JSON.parse(localStorage.getItem("user")) || {};
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(`http://localhost:3001/api/favorito/agregar/${usuario.id}`, {
+        idUsuario: usuario.id,
+        idPropiedades: prop.id,
+        nombre: prop.nombre,
+        precio: prop.precio,
+        imagen: prop.imagen,
+      })
+      .then(() => alert("PROPIEDAD AGREGADA A FAVORITOS"));
+  };
   return (
     <div className="card mb-3">
       <div className="row g-0">
@@ -16,7 +32,11 @@ const Propiedad = ({ prop }) => {
         <div className="col-md-8">
           <div className="card-body">
             <Link to="/favoritos">
-              <button class="favorito" className="btn btn-outline-warning">
+              <button
+                class="favorito"
+                className="btn btn-outline-warning"
+                onClick={handleSubmit}
+              >
                 ⭐ FAVORITOS
               </button>
             </Link>

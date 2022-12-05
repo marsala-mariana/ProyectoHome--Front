@@ -8,7 +8,9 @@ import MiPerfil from "./Component/MiPerfil";
 import Admin from "./Component/Admin";
 import AdminEditarProp from "./Component/AdminEditarProp";
 import DetallesProp from "./Component/DetallesProp";
-import Favoritos from "./Component/Favoritos";
+
+import BusquedaEncontrada from "./Component/BusquedaEncontrada";
+import TodosLosFavoritos from "./Component/TodosLosFavoritos";
 
 function App() {
   return (
@@ -23,7 +25,8 @@ function App() {
         <Route path="/perfil" element={<MiPerfil />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/editar/:id" element={<AdminEditarProp />} />
-        <Route path="/favoritos" element={<Favoritos />} />
+        <Route path="/encontrado" element={<BusquedaEncontrada />} />
+        <Route path="/favoritos" element={<TodosLosFavoritos />} />
       </Routes>
     </div>
   );

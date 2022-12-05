@@ -17,9 +17,12 @@ const AdminPropiedad = () => {
 
   //borro una propiedad
   const handleSubmit = (id) => {
-    axios.delete(`http://localhost:3001/api/propiedades/${id}`, {
-      withCredentials: true,
-    });
+    axios
+      .delete(`http://localhost:3001/api/propiedades/${id}`, {
+        withCredentials: true,
+      })
+      .then(() => window.location.reload(false))
+      .then(() => alert("Propiedad eliminada existosamente"));
   };
 
   return (

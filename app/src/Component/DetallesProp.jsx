@@ -17,7 +17,7 @@ const DetallesProp = () => {
       });
   }, []);
 
-  // console.log(detalle);
+  //  console.log(detalle.imagen ? detalle.imagen[0] : "");
   return (
     <div>
       <a href="http://localhost:3000/"> Home</a>
@@ -25,8 +25,7 @@ const DetallesProp = () => {
         <div class="row g-0">
           <div class="col-md-4">
             <img
-              // src={detalle.imagen[0]}
-              src=""
+              src={detalle.imagen ? detalle.imagen[0] : ""}
               class="img-fluid rounded-start"
               alt="imagen1"
             />

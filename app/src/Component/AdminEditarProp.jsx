@@ -2,10 +2,11 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useInput from "../Hooks/useInput";
 
 const AdminEditarProp = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   //console.log(id);
   const [editar, setEditar] = useState({});
@@ -27,14 +28,17 @@ const AdminEditarProp = () => {
       .get(`http://localhost:3001/api/propiedades/${id}`, {
         withCredentials: true,
       })
-      .then((res) => res.data)
+      .then((res) => {
+        return res.data;
+      })
       .then((editar) => {
         setEditar(editar);
       });
-  }, []);
+  }, [id]);
 
   //console.log(editar, "EDITAR");
-  const handleSubmit = (id) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .put(
         `http://localhost:3001/api/propiedades/${id}`,
@@ -54,14 +58,14 @@ const AdminEditarProp = () => {
           withCredentials: true,
         }
       )
-
+      .then(() => navigate(`/detalles/${id}`))
       .catch((error) => error);
   };
   return (
     <div>
       <a href="http://localhost:3000/"> Home</a>
       <main className="form-signin">
-        <form className="row">
+        <form className="row" onSubmit={handleSubmit}>
           <div className="Auto">
             <label for="floatingInput">Ubicabion </label>
             <p>{editar.ubicacion}</p>
@@ -144,11 +148,7 @@ const AdminEditarProp = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            class="w-100 btn btn-lg btn-primary"
-            onSubmit={handleSubmit}
-          >
+          <button type="submit" class="w-100 btn btn-lg btn-primary">
             Guardar
           </button>
         </form>

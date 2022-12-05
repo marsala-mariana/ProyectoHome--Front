@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //import Propiedad from "./Propiedad";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -6,12 +6,18 @@ import axios from "axios";
 import "../style/Navbar.css";
 import logo from "../img/Group 177.png";
 import MenuDesplegable from "./MenuDesplegable";
+import BusquedaEncontrada from "./BusquedaEncontrada";
 
 const Navbar = () => {
   const usuario = JSON.parse(localStorage.getItem("user")) || {};
   //console.log(usuario, "NAVBAR");
   const navigate = useNavigate();
 
+  const [input, setInput] = useState("");
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
   const handleLogOut = async () => {
     try {
       await axios.post("http://localhost:3001/api/users/logout");
@@ -80,8 +86,9 @@ const Navbar = () => {
 
           <form className="d-flex" role="search">
             <input
+              onChange={handleInput}
               className="form-control me-2"
-              type="search"
+              type="text"
               placeholder="Busqueda"
               aria-label="Search"
             />

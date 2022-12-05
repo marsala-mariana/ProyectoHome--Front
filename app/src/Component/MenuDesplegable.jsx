@@ -36,6 +36,9 @@ const MenuDesplegable = () => {
           <a className="dropdown-item" href="#">
             Agenda tu visita
           </a>
+          <a className="dropdown-item" href="http://localhost:3000/favoritos">
+            Mis Favoritos
+          </a>
           {fals ? (
             <a className="dropdown-item" href="http://localhost:3000/perfil">
               Mi perfil

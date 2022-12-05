@@ -3,13 +3,12 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 import AgregarPropiedad from "./AgregarPropiedad";
 import AdminPropiedad from "./AdminPropiedad";
 
 const Admin = () => {
   const [user, setUser] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -29,8 +28,9 @@ const Admin = () => {
         withCredentials: true,
       })
       .then(() => {
-        navigate("/admin");
-      });
+        window.location.reload(false);
+      })
+      .then(() => alert("Usuario eliminado"));
   };
   return (
     <div>

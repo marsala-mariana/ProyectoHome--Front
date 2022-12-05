@@ -36,6 +36,7 @@ const AgregarPropiedad = () => {
           withCredentials: true,
         }
       )
+      .then(() => alert("PROPIEDAD AGREGADA"))
 
       .catch((error) => error);
   };
