@@ -1,23 +1,36 @@
-import React, { useState } from "react";
-//import Propiedad from "./Propiedad";
+import React, { useContext, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../style/Navbar.css";
 import logo from "../img/Group 177.png";
 import MenuDesplegable from "./MenuDesplegable";
-import BusquedaEncontrada from "./BusquedaEncontrada";
+
+import { BusquedaContext } from "../Contexts/BusquedaContext";
 
 const Navbar = () => {
   const usuario = JSON.parse(localStorage.getItem("user")) || {};
-  //console.log(usuario, "NAVBAR");
   const navigate = useNavigate();
 
   const [input, setInput] = useState("");
+  const { busquedaProp, setBusquedaProp } = useContext(BusquedaContext);
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .get(`http://localhost:3001/api/propiedades/busqueda/${input}`)
+      .then((res) => setBusquedaProp(res.data))
+
+      .catch((error) => console.log(error, "NO FUNCIONA LA BUSQUEDA"));
+
+    navigate("/encontrado");
+  };
+
   const handleLogOut = async () => {
     try {
       await axios.post("http://localhost:3001/api/users/logout");
@@ -29,7 +42,7 @@ const Navbar = () => {
       console.log(err);
     }
   };
-
+  console.log(busquedaProp);
   return (
     <div id="fondo">
       <nav className="navbar navbar-expand-sm " id="nav">
@@ -84,7 +97,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <form className="d-flex" role="search">
+          <form className="d-flex" role="search" onSubmit={handleSubmit}>
             <input
               onChange={handleInput}
               className="form-control me-2"

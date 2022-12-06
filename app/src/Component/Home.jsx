@@ -17,18 +17,22 @@ const Home = () => {
       .then((propiedad) => setPropiedad(propiedad));
   }, []);
 
-  //console.log(propiedad);
-
   const handleSubmit = () => {
-    const ordenado = propiedad.sort(function (a, b) {
+    const ordenado = propiedad.slice().sort(function (a, b) {
       return b.precio - a.precio;
     });
 
-    console.log(ordenado, "ordenando");
+    setPropiedad(ordenado);
+  };
+
+  const handleSubmitMenor = () => {
+    const ordenado = propiedad.slice().sort(function (a, b) {
+      return a.precio - b.precio;
+    });
 
     setPropiedad(ordenado);
   };
-  console.log(propiedad, "prop");
+
   return (
     <div>
       <div className="container cd-sm">
@@ -47,7 +51,11 @@ const Home = () => {
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <li>
-              <button class="dropdown-item" type="button">
+              <button
+                class="dropdown-item"
+                type="button"
+                onClick={handleSubmitMenor}
+              >
                 Menor Precio
               </button>
             </li>

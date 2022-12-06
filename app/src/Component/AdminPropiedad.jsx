@@ -33,7 +33,7 @@ const AdminPropiedad = () => {
         <ul class="list-group list-group-flush">
           {pedido.map((e) => {
             return (
-              <li class="list-group-item">
+              <li key={e.id} class="list-group-item">
                 {e.nombre}
                 <br />
                 {e.ubicacion}

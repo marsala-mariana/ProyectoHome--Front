@@ -17,7 +17,6 @@ const DetallesProp = () => {
       });
   }, []);
 
-  //  console.log(detalle.imagen ? detalle.imagen[0] : "");
   return (
     <div>
       <a href="http://localhost:3000/"> Home</a>

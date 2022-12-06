@@ -18,8 +18,6 @@ const MenuDesplegable = () => {
     }
   };
 
-  const fals = usuario.admin === false;
-
   return (
     <div className="btn-group me-2" role="group">
       <button
@@ -39,7 +37,7 @@ const MenuDesplegable = () => {
           <a className="dropdown-item" href="http://localhost:3000/favoritos">
             Mis Favoritos
           </a>
-          {fals ? (
+          {!usuario.admin ? (
             <a className="dropdown-item" href="http://localhost:3000/perfil">
               Mi perfil
             </a>

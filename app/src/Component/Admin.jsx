@@ -8,8 +8,8 @@ import AgregarPropiedad from "./AgregarPropiedad";
 import AdminPropiedad from "./AdminPropiedad";
 
 const Admin = () => {
+  const usuario = JSON.parse(localStorage.getItem("user")) || {};
   const [user, setUser] = useState([]);
-
   useEffect(() => {
     axios
       .get("http://localhost:3001/api/users/usuarios", {
@@ -33,54 +33,59 @@ const Admin = () => {
       .then(() => alert("Usuario eliminado"));
   };
   return (
-    <div>
-      <a href="http://localhost:3000/"> Home</a>
-      <div class="card">
-        <div class="card-body">
-          <h4>PERFIL ADMINISTRADOR</h4>
-        </div>
-      </div>
+    <>
+      {usuario.admin ? (
+        <div>
+          <a href="http://localhost:3000/"> Home</a>
+          <div class="card">
+            <div class="card-body">
+              <h4>PERFIL ADMINISTRADOR</h4>
+            </div>
+          </div>
 
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title">Lista de Usuarios:</h2>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Lista de Usuarios:</h2>
 
-          <ul class="list-group list-group-flush">
-            {user.map((usuarios) => {
-              return (
-                <li class="list-group-item">
-                  {usuarios.nombre}
-                  <br />
-                  {usuarios.celular}
-                  <br />
-                  {usuarios.email}
-                  <br />
-                  {usuarios.updatedAt}
-                  <br />
-                  <button
-                    className="btn btn-outline-warning"
-                    onClick={() => handleSubmit(usuarios.id)}
-                  >
-                    🗑 Eliminar
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+              <ul class="list-group list-group-flush">
+                {user.map((usuarios) => {
+                  return (
+                    <li key={usuarios.id} class="list-group-item">
+                      {usuarios.nombre}
+                      <br />
+                      {usuarios.celular}
+                      <br />
+                      {usuarios.email}
+                      <br />
+                      {usuarios.updatedAt}
+                      <br />
+                      <button
+                        className="btn btn-outline-warning"
+                        onClick={() => handleSubmit(usuarios.id)}
+                      >
+                        🗑 Eliminar
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <AgregarPropiedad />
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <AdminPropiedad />
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <AgregarPropiedad />
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <AdminPropiedad />
-        </div>
-      </div>
-    </div>
+      ) : (
+        <h1>NO SOS ADMIN</h1>
+      )}
+    </>
   );
 };
-
 export default Admin;

@@ -37,7 +37,7 @@ const AgregarPropiedad = () => {
         }
       )
       .then(() => alert("PROPIEDAD AGREGADA"))
-
+      .then(() => window.location.reload(false))
       .catch((error) => error);
   };
 
