@@ -36,8 +36,6 @@ const MiPerfil = () => {
 
   return (
     <div>
-      <a href="http://localhost:3000/"> Home</a>
-
       <main className="form-signin">
         <form className="row" onSubmit={handleSubmit}>
           <div className="Auto">

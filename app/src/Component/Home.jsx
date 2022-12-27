@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
 import Propiedad from "./Propiedad";
 import "../style/Propiedades.css";
 import Casa from "../img/casa.jpg";
 import axios from "axios";
+import { useContext } from "react";
+import { HomeContext } from "../Contexts/HomeContext";
 
 const Home = () => {
-  const [propiedad, setPropiedad] = useState([]);
+  const { propiedad, setPropiedad } = useContext(HomeContext);
 
   useEffect(() => {
     axios
@@ -37,7 +38,7 @@ const Home = () => {
     <div>
       <div className="container cd-sm">
         <div>
-          <img class="casa" src={Casa} alt="imagen" />
+          <img class="casa" className="img-fluid" src={Casa} alt="imagen" />
         </div>
         <div class="dropdown">
           <button

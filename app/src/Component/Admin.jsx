@@ -36,7 +36,6 @@ const Admin = () => {
     <>
       {usuario.admin ? (
         <div>
-          <a href="http://localhost:3000/"> Home</a>
           <div class="card">
             <div class="card-body">
               <h4>PERFIL ADMINISTRADOR</h4>

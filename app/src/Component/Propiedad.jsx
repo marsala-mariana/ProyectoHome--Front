@@ -19,6 +19,7 @@ const Propiedad = ({ prop }) => {
       })
       .then(() => alert("PROPIEDAD AGREGADA A FAVORITOS"));
   };
+
   return (
     <div className="card mb-3">
       <div className="row g-0">
@@ -34,17 +35,21 @@ const Propiedad = ({ prop }) => {
             <Link to="/favoritos">
               <button
                 class="favorito"
-                className="btn btn-outline-warning"
+                className="btn btn-warning"
                 onClick={handleSubmit}
               >
-                ⭐ FAVORITOS
+                💛
               </button>
             </Link>
             <Link to={`/detalles/${prop.id}`}>
-              <button class="favorito" className="btn btn-outline-warning">
-                ⭐ DETALLES
+              <button class="favorito" className="btn btn-warning">
+                ⭐ Detalles
               </button>
             </Link>
+            <Link to={"/citas"}>
+              <button className="btn btn-warning">Contactar</button>
+            </Link>
+            <hr />
             <h5 className="card-title">${prop?.precio}</h5>
             <h5 className="card-title">{prop?.nombre}</h5>
             <p className="card-text">

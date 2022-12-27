@@ -5,14 +5,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import BusquedaContextProvider from "./Contexts/BusquedaContext";
+import HomeContextProvider from "./Contexts/HomeContext";
+import PropIdContextProvider from "./Contexts/PropIdContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <BusquedaContextProvider>
-        <App />
-      </BusquedaContextProvider>
+      <PropIdContextProvider>
+        <HomeContextProvider>
+          <BusquedaContextProvider>
+            <App />
+          </BusquedaContextProvider>
+        </HomeContextProvider>
+      </PropIdContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

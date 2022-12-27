@@ -24,7 +24,6 @@ const TodosLosFavoritos = () => {
 
   return (
     <div>
-      <a href="http://localhost:3000/"> Home</a>
       <div class="card">
         <div class="card-body">
           <h4> ⭐ MIS FAVORITOS</h4>

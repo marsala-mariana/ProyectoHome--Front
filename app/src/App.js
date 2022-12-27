@@ -11,6 +11,7 @@ import DetallesProp from "./Component/DetallesProp";
 
 import BusquedaEncontrada from "./Component/BusquedaEncontrada";
 import TodosLosFavoritos from "./Component/TodosLosFavoritos";
+import Citas from "./Component/Citas";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/editar/:id" element={<AdminEditarProp />} />
         <Route path="/encontrado" element={<BusquedaEncontrada />} />
         <Route path="/favoritos" element={<TodosLosFavoritos />} />
+        <Route path="/citas" element={<Citas />} />
       </Routes>
     </div>
   );

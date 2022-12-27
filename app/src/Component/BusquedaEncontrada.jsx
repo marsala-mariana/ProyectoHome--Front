@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { BusquedaContext } from "../Contexts/BusquedaContext";
 import "../style/Busqueda.css";
 
 const BusquedaEncontrada = () => {
-  const { busquedaProp, setBusquedaProp } = useContext(BusquedaContext);
+  const { busquedaProp } = useContext(BusquedaContext);
 
   return (
     <div>
-      <a href="http://localhost:3000/"> Home</a>
       <div className="card ">
         <div className="card-body">
           <ul class="list-group list-group-flush">

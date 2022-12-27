@@ -14,7 +14,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const [input, setInput] = useState("");
-  const { busquedaProp, setBusquedaProp } = useContext(BusquedaContext);
+  const { setBusquedaProp } = useContext(BusquedaContext);
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -31,18 +31,6 @@ const Navbar = () => {
     navigate("/encontrado");
   };
 
-  const handleLogOut = async () => {
-    try {
-      await axios.post("http://localhost:3001/api/users/logout");
-
-      localStorage.removeItem("user");
-
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log(busquedaProp);
   return (
     <div id="fondo">
       <nav className="navbar navbar-expand-sm " id="nav">
@@ -51,19 +39,20 @@ const Navbar = () => {
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse p-0"
+            className="collapse navbar-collapse "
             id="navbarSupportedContent"
           >
-            <img class="logo" src={logo} alt="logo" />
-
+            <Link to="/">
+              <img class="logo" src={logo} alt="logo" />
+            </Link>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <>
                 {usuario.nombre ? (

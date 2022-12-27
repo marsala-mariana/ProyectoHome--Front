@@ -35,3 +35,17 @@
   margin-left: 103px;
   margin-top: 5px;
 }
+
+.btn-warning {
+  --bs-btn-bg: #ff6e07;
+  --bs-btn-color: #f8f9fa;
+  --bs-btn-hover-bg: #ffffff;
+  --bs-btn-hover-border-color: #ffc720;
+}
+.btn-outline-warning {
+  --bs-btn-hover-bg: #ff6e07;
+  --bs-btn-hover-color: #f8f9fa;
+  --bs-btn-active-bg: #ffffff;
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: #ff6e07;
+}
