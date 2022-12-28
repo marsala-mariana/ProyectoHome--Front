@@ -3,6 +3,7 @@ import React from "react";
 import "../style/Favoritos.css";
 import { useEffect } from "react";
 import { useState } from "react";
+import swal from "sweetalert";
 
 const TodosLosFavoritos = () => {
   const usuario = JSON.parse(localStorage.getItem("user")) || {};
@@ -18,14 +19,15 @@ const TodosLosFavoritos = () => {
   const handleSubmit = (id) => {
     axios
       .delete(`http://localhost:3001/api/favorito/borrar/${id}`)
-      .then(() => window.location.reload(false))
-      .then(() => alert("Eliminado existosamente"));
+
+      .then(() => swal("Eliminado exitosamente!"))
+      .then(() => window.location.reload(false));
   };
 
   return (
     <div>
-      <div class="card">
-        <div class="card-body">
+      <div className="card">
+        <div className="card-body">
           <h4> ⭐ MIS FAVORITOS</h4>
         </div>
       </div>

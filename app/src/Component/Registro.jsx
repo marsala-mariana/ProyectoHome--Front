@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const Registro = () => {
   const navigate = useNavigate();
-
   const [nombre, setNombre] = useState("");
   const [celu, setCelu] = useState([]);
   const [email, setEmail] = useState("");

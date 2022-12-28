@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/Propiedades.css";
+import swal from "sweetalert";
 
 const Propiedad = ({ prop }) => {
   const usuario = JSON.parse(localStorage.getItem("user")) || {};
@@ -17,7 +18,7 @@ const Propiedad = ({ prop }) => {
         precio: prop.precio,
         imagen: prop.imagen,
       })
-      .then(() => alert("PROPIEDAD AGREGADA A FAVORITOS"));
+      .then(() => swal("Propiedad agregada a Favoritos!"));
   };
 
   return (
@@ -30,25 +31,42 @@ const Propiedad = ({ prop }) => {
             alt={prop?.nombre}
           />
         </div>
+
         <div className="col-md-8">
           <div className="card-body">
-            <Link to="/favoritos">
-              <button
-                class="favorito"
-                className="btn btn-warning"
-                onClick={handleSubmit}
-              >
-                💛
-              </button>
-            </Link>
-            <Link to={`/detalles/${prop.id}`}>
-              <button class="favorito" className="btn btn-warning">
-                ⭐ Detalles
-              </button>
-            </Link>
-            <Link to={"/citas"}>
-              <button className="btn btn-warning">Contactar</button>
-            </Link>
+            <>
+              {usuario.nombre ? (
+                <div>
+                  <Link to="/favoritos">
+                    <button
+                      class="favorito"
+                      className="btn btn-warning"
+                      onClick={handleSubmit}
+                    >
+                      💛
+                    </button>
+                  </Link>
+
+                  <Link to={"/citas"}>
+                    <button className="btn btn-warning">Contactar</button>
+                  </Link>
+
+                  <Link to={`/detalles/${prop.id}`}>
+                    <button class="favorito" className="btn btn-warning">
+                      ⭐ Detalles
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div>
+                  <Link to={`/detalles/${prop.id}`}>
+                    <button class="favorito" className="btn btn-warning">
+                      ⭐ Detalles
+                    </button>
+                  </Link>
+                </div>
+              )}
+            </>
             <hr />
             <h5 className="card-title">${prop?.precio}</h5>
             <h5 className="card-title">{prop?.nombre}</h5>

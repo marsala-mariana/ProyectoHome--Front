@@ -31,9 +31,6 @@ const MenuDesplegable = () => {
 
       <div>
         <ul class="dropdown-menu">
-          <a className="dropdown-item" href="http://localhost:3000/citas">
-            Agenda tu visita
-          </a>
           <a className="dropdown-item" href="http://localhost:3000/favoritos">
             Mis Favoritos
           </a>
@@ -42,9 +39,18 @@ const MenuDesplegable = () => {
               Mi perfil
             </a>
           ) : (
-            <a className="dropdown-item" href="http://localhost:3000/admin">
-              Mi perfil Admin
-            </a>
+            <>
+              <a className="dropdown-item" href="http://localhost:3000/admin">
+                Mi perfil Admin
+              </a>
+
+              <a
+                className="dropdown-item"
+                href="http://localhost:3000/admincitas"
+              >
+                Citas
+              </a>
+            </>
           )}
           <a className="dropdown-item" onClick={handleLogOut}>
             Cerrar sesión

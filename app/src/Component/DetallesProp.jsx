@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
-
 import { useParams } from "react-router-dom";
 import { PropIdContext } from "../Contexts/PropIdContext";
 
@@ -21,42 +20,84 @@ const DetallesProp = () => {
 
   return (
     <div className="container">
-      <div className="card mb-4">
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src={detalle.imagen ? detalle.imagen[0] : ""}
-              className="img-fluid rounded-start"
-              alt="imagen1"
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">{detalle.nombre}</h5>
-              <p className="card-text">{detalle.descripcion}</p>
-              <p className="card-text">
-                <small className="text-muted">{detalle.ubicacion}</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">{detalle.estado}</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">{detalle.barrio}</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">{detalle.pais}</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">{detalle.disponibilidad}</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">{detalle.precio}</small>
-              </p>
-              <p className="card-text">
-                <small className="text-muted">{detalle.categoria}</small>
-              </p>
+      <div className="Auto">
+        <div
+          id="carouselExampleControls"
+          className="carousel slide "
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                src={detalle.imagen ? detalle.imagen[1] : ""}
+                className="d-block w-100 rounded "
+                alt="imagen"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src={detalle.imagen ? detalle.imagen[2] : ""}
+                className="d-block w-100 rounded "
+                alt="imagen"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src={detalle.imagen ? detalle.imagen[3] : ""}
+                className="d-block w-100 rounded "
+                alt="imagen"
+              />
             </div>
           </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+
+      <div className="container">
+        <div class="card-body">
+          {detalle.nombre}
+          <br />
+          <br />
+          {detalle.descripcion}
+          <br />
+          <br />
+          Barrio: {detalle.barrio}
+          <br />
+          Ubicación: {detalle.ubicacion}
+          <br />
+          País: {detalle.pais}
+          <br />
+          Precio: {detalle.precio}
+          <br />
+          Disponibilidad: {detalle.disponibilidad}
+          <br />
+          Categoria: {detalle.categoria}
         </div>
       </div>
     </div>

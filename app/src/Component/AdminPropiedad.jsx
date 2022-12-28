@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const AdminPropiedad = () => {
   const [pedido, setPedido] = useState([]);
 
-  //traigo las propiedades
   useEffect(() => {
     axios
       .get("http://localhost:3001/api/propiedades/")
@@ -15,14 +15,14 @@ const AdminPropiedad = () => {
       .then((pedido) => setPedido(pedido));
   }, []);
 
-  //borro una propiedad
   const handleSubmit = (id) => {
     axios
       .delete(`http://localhost:3001/api/propiedades/${id}`, {
         withCredentials: true,
       })
-      .then(() => window.location.reload(false))
-      .then(() => alert("Propiedad eliminada existosamente"));
+
+      .then(() => swal("Propiedad eliminada!"))
+      .then(() => window.location.reload(false));
   };
 
   return (

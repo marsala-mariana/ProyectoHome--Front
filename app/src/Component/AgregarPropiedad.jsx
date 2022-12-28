@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import useInput from "../Hooks/useInput";
+import swal from "sweetalert";
 
 const AgregarPropiedad = () => {
   const ubicacion = useInput();
@@ -36,7 +37,7 @@ const AgregarPropiedad = () => {
           withCredentials: true,
         }
       )
-      .then(() => alert("PROPIEDAD AGREGADA"))
+      .then(() => swal("Propiedad agregada!"))
       .then(() => window.location.reload(false))
       .catch((error) => error);
   };

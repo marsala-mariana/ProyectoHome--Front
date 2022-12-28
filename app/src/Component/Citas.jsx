@@ -24,11 +24,12 @@ const Citas = () => {
         telefono: telefono.value,
         email: email.value,
         mensaje: mensaje.value,
+        imagen: detalle.imagen,
       })
-      .then(() => swal("Enviado", "En breve nos contactaremos ", "Ok"))
-      .cath((e) => console.log(e, "NO"));
+      .then(() => swal("Enviado", "En breve nos contactaremos ", "success"))
+      .cath((e) => e);
   };
-  //console.log(detalle, "detalle id");
+
   return (
     <div>
       <main className="form-signin">

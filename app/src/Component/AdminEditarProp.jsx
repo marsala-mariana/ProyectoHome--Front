@@ -8,7 +8,6 @@ import useInput from "../Hooks/useInput";
 const AdminEditarProp = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  //console.log(id);
   const [editar, setEditar] = useState({});
 
   const ubicacion = useInput();
@@ -20,8 +19,6 @@ const AdminEditarProp = () => {
   const precio = useInput();
   const descripcion = useInput();
   const categoria = useInput();
-
-  //console.log(editar, "EDITAR");
 
   useEffect(() => {
     axios
@@ -36,7 +33,6 @@ const AdminEditarProp = () => {
       });
   }, [id]);
 
-  //console.log(editar, "EDITAR");
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
