@@ -5,18 +5,19 @@ import { useEffect } from "react";
 import swal from "sweetalert";
 
 const AdminCitas = () => {
-  const usuario = JSON.parse(localStorage.getItem("user")) || {};
+  // const usuario = JSON.parse(localStorage.getItem("user")) || {};
 
   const [lista, setLista] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/cita/ver/${usuario.id} `, {
-        withCredentials: true,
+      .get("http://localhost:3001/api/cita/")
+      .then((res) => {
+        return res.data;
       })
-      .then((res) => res.data)
       .then((list) => setLista(list));
   }, []);
 
+  console.log(lista, "lista");
   const handleSubmit = (id) => {
     axios
       .delete(`http://localhost:3001/api/cita/eliminar/${id}`, {
@@ -41,13 +42,12 @@ const AdminCitas = () => {
           {lista.map((i) => {
             return (
               <div key={i.id} className="list-group-item">
-                <img src={i?.imagen[1]} alt="imagen" style={imgStyles} />
+                <img src={i?.imagen[0]} alt="imagen" style={imgStyles} />
 
                 <h5 className="card-title">{i.email}</h5>
                 <h5 className="card-title">{i.telefono}</h5>
                 <h5 className="card-title"> {i.nombre}</h5>
                 <h5 className="card-title"> {i.mensaje}</h5>
-
                 <button
                   className="btn btn-outline-warning"
                   onClick={() => handleSubmit(i.id)}

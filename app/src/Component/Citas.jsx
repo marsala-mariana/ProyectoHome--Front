@@ -30,6 +30,7 @@ const Citas = () => {
       .cath((e) => e);
   };
 
+  console.log(detalle, "det");
   return (
     <div>
       <main className="form-signin">
